@@ -1,3 +1,3 @@
-export const background = '#474747';
+export const background = '#0d1117';
 export const textColor = '#eeeeee';
 export const highlight = '#7AA5E6';
