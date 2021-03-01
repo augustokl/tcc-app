@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { darken } from 'polished';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
-import { background, textColor } from '../../styles/colors';
+import { background, textColor, orange } from '../../styles/colors';
 
 interface InformationValueTextType extends Text {
   textColor?: string;
@@ -67,7 +67,7 @@ export const TemperatureCircle = styled(AnimatedCircularProgress).attrs(() => ({
   size: 250,
   width: 5,
   backgroundWidth: 5,
-  tintColor: '#ff9000',
+  tintColor: orange,
   backgroundColor: darken(0.2, background),
   arcSweepAngle: 240,
   rotation: 240,
@@ -78,6 +78,6 @@ export const TemperatureCircle = styled(AnimatedCircularProgress).attrs(() => ({
 
 export const TemperatureLabel = styled.Text`
   font-size: 48px;
-  color: #ff9000;
+  color: ${orange};
   font-family: 'Montserrat-medium';
 `;
