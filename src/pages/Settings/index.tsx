@@ -7,10 +7,9 @@ import {
   Category,
   CategoryTitle,
   CategoryValues,
-  ButtonSave,
-  ButtonText,
 } from './styles';
 import { orange } from '../../styles/colors';
+import ButtonSave from '../../components/ButtonSave';
 
 const Settings: React.FC = () => {
   const [temp, setTemp] = useState([10, 20]);
@@ -46,7 +45,7 @@ const Settings: React.FC = () => {
         <CategoryValues>{`${humidity[0]}% - ${humidity[1]}%`}</CategoryValues>
       </Category>
       <Slider
-        values={temp}
+        values={humidity}
         sliderLength={350}
         selectedStyle={{
           backgroundColor: orange,
@@ -57,9 +56,7 @@ const Settings: React.FC = () => {
         step={1}
         snapped
       />
-      <ButtonSave>
-        <ButtonText>Salvar</ButtonText>
-      </ButtonSave>
+      <ButtonSave text="Salvar" />
     </Container>
   );
 };
