@@ -36,19 +36,3 @@ export const CategoryValues = styled.Text`
   color: ${orange};
   font-family: 'Montserrat-light';
 `;
-
-export const ButtonSave = styled.TouchableOpacity`
-  margin-top: auto;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
-  background-color: ${orange};
-  border-radius: 5px;
-`;
-
-export const ButtonText = styled.Text`
-  font-family: 'Montserrat-medium';
-  font-size: 18px;
-  color: ${background};
-  padding: 15px 120px;
-`;
