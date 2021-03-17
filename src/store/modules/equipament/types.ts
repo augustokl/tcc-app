@@ -1,18 +1,18 @@
-export enum EquipamentTypes {
-  requestData = '@equipament/DATA_REQUEST',
-  successData = '@equipament/DATA_SUCCESS',
-  error = '@equipament/ERROR',
+export enum equipmentTypes {
+  requestData = '@equipment/DATA_REQUEST',
+  successData = '@equipment/DATA_SUCCESS',
+  error = '@equipment/ERROR',
 }
 
-export interface Equipament {
+export interface equipment {
   id: number;
   fan: boolean;
   humidity: number;
   temperature: number;
 }
 
-export interface EquipamentState {
-  readonly data: Equipament;
+export interface equipmentState {
+  readonly data: equipment;
   readonly loading: boolean;
   readonly error: boolean;
 }

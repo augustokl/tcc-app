@@ -1,21 +1,21 @@
 import IDataFormat from './dtos/IDataFormat';
-import { EquipamentTypes } from './types';
+import { equipmentTypes } from './types';
 
 export function getDataRequest() {
   return {
-    type: EquipamentTypes.requestData,
+    type: equipmentTypes.requestData,
   };
 }
 
 export function getDataSuccess(data: IDataFormat) {
   return {
-    type: EquipamentTypes.successData,
+    type: equipmentTypes.successData,
     payload: { data },
   };
 }
 
-export function equipamentError() {
+export function equipmentError() {
   return {
-    type: EquipamentTypes.error,
+    type: equipmentTypes.error,
   };
 }

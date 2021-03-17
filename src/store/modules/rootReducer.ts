@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-import equipament from './equipament/reducer';
+import equipment from './equipment/reducer';
 
-export default combineReducers({ equipament });
+export default combineReducers({ equipment });

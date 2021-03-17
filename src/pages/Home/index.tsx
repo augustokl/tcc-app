@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { ApplicationState } from '../../store';
-import { getDataRequest } from '../../store/modules/equipament/actions';
+import { getDataRequest } from '../../store/modules/equipment/actions';
 import { textColor } from '../../styles/colors';
 
 import {
@@ -23,7 +23,7 @@ import {
 
 const Temperature: React.FC = () => {
   const { data, loading } = useSelector(
-    (state: ApplicationState) => state.equipament,
+    (state: ApplicationState) => state.equipment,
   );
   const dispatch = useDispatch();
 
