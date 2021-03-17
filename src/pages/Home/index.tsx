@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { useIsFocused } from '@react-navigation/native';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -22,6 +24,8 @@ import {
 } from './styles';
 
 const Temperature: React.FC = () => {
+  const isFocused = useIsFocused();
+
   const { data, loading } = useSelector(
     (state: ApplicationState) => state.equipment,
   );
@@ -29,7 +33,7 @@ const Temperature: React.FC = () => {
 
   useEffect(() => {
     dispatch(getDataRequest());
-  }, []);
+  }, [isFocused]);
 
   if (loading) {
     return (

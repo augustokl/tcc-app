@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { background, highlight } from '../styles/colors';
 
 import Home from '../pages/Home';
-import Settings from '../pages/Settings';
-import Controls from '../pages/Controls';
+import ManualConf from '../pages/ManualConf';
+import AutomaticConf from '../pages/AutomaticConf';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,9 +16,9 @@ const Routes: React.FC = () => (
       tabBarIcon: ({ _, color }) => {
         let iconName = 'home';
 
-        if (route.name === 'Configurações') {
+        if (route.name === 'Configurações Manuais') {
           iconName = 'settings';
-        } else if (route.name === 'Controles') {
+        } else if (route.name === 'Configurações Automáticas') {
           iconName = 'options';
         }
 
@@ -32,8 +32,8 @@ const Routes: React.FC = () => (
       style: { backgroundColor: background },
     }}>
     <Tab.Screen name="Temperatura" component={Home} />
-    <Tab.Screen name="Controles" component={Controls} />
-    <Tab.Screen name="Configurações" component={Settings} />
+    <Tab.Screen name="Configurações Automáticas" component={AutomaticConf} />
+    <Tab.Screen name="Configurações Manuais" component={ManualConf} />
   </Tab.Navigator>
 );
 
