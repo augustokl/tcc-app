@@ -1,41 +1,33 @@
+import { Reducer } from 'redux';
 import produce from 'immer';
-import Types from './types';
+import { EquipamentTypes, EquipamentState, Equipament } from './types';
 
-import IDataFormat from './dtos/IDataFormat';
-
-interface IPayloadData {
-  data: IDataFormat;
-  error: string;
-}
-
-interface IEquipamentAction {
-  type: string;
-  payload: IPayloadData;
-}
-
-const INITIAL_STATE = {
-  data: {} as IDataFormat,
+const INITIAL_STATE: EquipamentState = {
+  data: {} as Equipament,
   loading: false,
-  err: '',
+  error: false,
 };
 
-export default function equipament(
-  state = INITIAL_STATE,
-  action: IEquipamentAction,
-) {
+const reducer: Reducer<EquipamentState> = (state = INITIAL_STATE, action) => {
   return produce(state, (draft) => {
     switch (action.type) {
-      case Types.requestData: {
+      case EquipamentTypes.requestData: {
         draft.loading = true;
+        draft.error = false;
         break;
       }
-      case Types.successData: {
+      case EquipamentTypes.successData: {
         draft.loading = false;
         draft.data = action.payload.data;
+        break;
       }
-      case Types.error: {
-        draft.err = action.payload.error;
+      case EquipamentTypes.error: {
+        draft.error = true;
+        draft.loading = false;
+        break;
       }
     }
   });
-}
+};
+
+export default reducer;
