@@ -1,27 +1,27 @@
 import { Reducer } from 'redux';
 import produce from 'immer';
-import { equipmentTypes, equipmentState, equipment } from './types';
+import { EquipmentTypes, EquipmentState, Equipment } from './types';
 
-const INITIAL_STATE: equipmentState = {
-  data: {} as equipment,
+const INITIAL_STATE: EquipmentState = {
+  data: {} as Equipment,
   loading: false,
   error: false,
 };
 
-const reducer: Reducer<equipmentState> = (state = INITIAL_STATE, action) => {
+const reducer: Reducer<EquipmentState> = (state = INITIAL_STATE, action) => {
   return produce(state, (draft) => {
     switch (action.type) {
-      case equipmentTypes.requestData: {
+      case EquipmentTypes.requestData: {
         draft.loading = true;
         draft.error = false;
         break;
       }
-      case equipmentTypes.successData: {
+      case EquipmentTypes.successData: {
         draft.loading = false;
         draft.data = action.payload.data;
         break;
       }
-      case equipmentTypes.error: {
+      case EquipmentTypes.error: {
         draft.error = true;
         draft.loading = false;
         break;

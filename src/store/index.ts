@@ -1,12 +1,12 @@
 import { createStore, Store, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { equipmentState } from './modules/equipment/types';
+import { EquipmentState } from './modules/equipment/types';
 
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
 export interface ApplicationState {
-  equipment: equipmentState;
+  equipment: EquipmentState;
 }
 
 const sagaMiddleware = createSagaMiddleware();

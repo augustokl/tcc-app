@@ -62,7 +62,7 @@ const Temperature: React.FC = () => {
           <InformationText>Ventilação</InformationText>
           <InformationValue>
             <MaterialIcons name="fan" color={textColor} size={22} />
-            <InformationValueText textColor="#b9ffb7">
+            <InformationValueText textColor={data.fan ? '#b9ffb7' : '#ed374f'}>
               {fanText}
             </InformationValueText>
           </InformationValue>

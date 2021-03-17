@@ -1,17 +1,18 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects';
 import api from '../../../config/api';
 
-import { equipmentTypes } from './types';
+import { EquipmentTypes } from './types';
 import { getDataSuccess, equipmentError } from './actions';
 
-function* getequipmentData() {
+function* getEquipmentData() {
   try {
     const { data } = yield call(api.get, 'equipments');
 
     yield put(getDataSuccess(data));
   } catch (err) {
+    console.log(err.message);
     yield put(equipmentError());
   }
 }
 
-export default all([takeLatest(equipmentTypes.requestData, getequipmentData)]);
+export default all([takeLatest(EquipmentTypes.requestData, getEquipmentData)]);
