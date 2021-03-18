@@ -1,4 +1,4 @@
-import { all, takeLatest, put, call, CallEffect } from 'redux-saga/effects';
+import { all, takeLatest, put, call } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 
 import api from '../../../config/api';
