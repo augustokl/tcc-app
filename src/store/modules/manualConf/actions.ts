@@ -27,7 +27,7 @@ export function updateManualConfSuccess(data: ManualConf) {
   };
 }
 
-export function automaticConfError() {
+export function manualConfError() {
   return {
     type: ManualConfTypes.error,
   };
