@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, SafeAreaView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+
 import Slider from '@ptomasroos/react-native-multi-slider';
 
 import { ApplicationState } from '../../store';
@@ -14,10 +15,13 @@ import { orange } from '../../styles/colors';
 
 import {
   Container,
+  Content,
   Title,
   Category,
   CategoryTitle,
   CategoryValues,
+  InputTime,
+  Picker,
 } from './styles';
 
 const Settings: React.FC = () => {
@@ -40,6 +44,13 @@ const Settings: React.FC = () => {
       min_temperature,
       max_temperature,
     } = data;
+
+    if(!min_humidity || max_humidity || min_temperature || max_temperature){
+      return
+    }
+
+    console.log('here')
+
 
     setTemp([min_temperature, max_temperature]);
     setHumidity([min_humidity, max_humidity]);
@@ -76,38 +87,55 @@ const Settings: React.FC = () => {
   return (
     <Container>
       <Title>Configurações Automáticas</Title>
-      <Category>
-        <CategoryTitle>Temperatura</CategoryTitle>
-        <CategoryValues>{`${temp[0]} °C - ${temp[1]} °C`}</CategoryValues>
-      </Category>
-      <Slider
-        values={temp}
-        sliderLength={350}
-        selectedStyle={{
-          backgroundColor: orange,
-        }}
-        onValuesChange={handleTempChangeValues}
-        min={0}
-        max={40}
-        step={1}
-        snapped
-      />
-      <Category>
-        <CategoryTitle>Umidade</CategoryTitle>
-        <CategoryValues>{`${humidity[0]}% - ${humidity[1]}%`}</CategoryValues>
-      </Category>
-      <Slider
-        values={humidity}
-        sliderLength={350}
-        selectedStyle={{
-          backgroundColor: orange,
-        }}
-        onValuesChange={handleHumidityChangeValues}
-        min={0}
-        max={100}
-        step={1}
-        snapped
-      />
+      <Content>
+        <Category>
+          <CategoryTitle>Temperatura</CategoryTitle>
+          <CategoryValues>{`${temp[0]} °C - ${temp[1]} °C`}</CategoryValues>
+        </Category>
+        <Slider
+          values={temp}
+          sliderLength={300}
+          selectedStyle={{
+            backgroundColor: orange,
+          }}
+          onValuesChange={handleTempChangeValues}
+          min={0}
+          max={40}
+          step={1}
+          snapped
+        />
+        <Category>
+          <CategoryTitle>Umidade</CategoryTitle>
+          <CategoryValues>{`${humidity[0]}% - ${humidity[1]}%`}</CategoryValues>
+        </Category>
+        <Slider
+          values={humidity}
+          sliderLength={300}
+          selectedStyle={{
+            backgroundColor: orange,
+          }}
+          onValuesChange={handleHumidityChangeValues}
+          min={0}
+          max={100}
+          step={1}
+          snapped
+        />
+        <Category>
+          <CategoryTitle>Tempo de ativação</CategoryTitle>
+        </Category>
+        <InputTime
+          keyboardType="numeric"
+          maxLength={2}
+        />
+        <Category>
+          <CategoryTitle>Fechamento Sombrite</CategoryTitle>
+        </Category>
+        <Picker  value={new Date()} />
+        <Category>
+          <CategoryTitle>Abertura Sombrite</CategoryTitle>
+        </Category>
+        <Picker  value={new Date()} />
+      </Content>
       <ButtonSave text="Salvar" onPress={onClickSave} />
     </Container>
   );
