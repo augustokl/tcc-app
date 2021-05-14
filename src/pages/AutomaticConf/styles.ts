@@ -2,6 +2,7 @@ import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { background, orange, textColor } from '../../styles/colors';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { TextInputMask } from 'react-native-masked-text'
 
 export const Container = styled.View`
   flex: 1;
@@ -44,7 +45,7 @@ export const CategoryValues = styled.Text`
   margin-top: 10px;
 `;
 
-export const InputTime = styled.TextInput`
+export const InputTime = styled(TextInputMask)`
   font-size: 16px;
   color: ${textColor};
   font-family: 'Montserrat-light';

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { ActivityIndicator, SafeAreaView } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Slider from '@ptomasroos/react-native-multi-slider';
@@ -27,6 +27,7 @@ import {
 const Settings: React.FC = () => {
   const [temp, setTemp] = useState([10, 20]);
   const [humidity, setHumidity] = useState([60, 80]);
+  const [interval, setInterval] = useState(0);
 
   const { data, loading } = useSelector(
     (state: ApplicationState) => state.automaticConf,
@@ -124,8 +125,22 @@ const Settings: React.FC = () => {
           <CategoryTitle>Tempo de ativação</CategoryTitle>
         </Category>
         <InputTime
-          keyboardType="numeric"
-          maxLength={2}
+          type={'custom'}
+          options={{
+            mask: '99',
+            validator: (value, settings) => {
+              console.log(value, settings)
+              return true
+            }
+          }}
+          keyboardType='numeric'
+          value={String(interval)}
+          onChangeText={newValue => {
+            const regex = new RegExp('^[0-2]?[0-9]?$', 'g')
+            if (regex.test(newValue)){
+              setInterval(Number(newValue))
+            }
+          }}
         />
         <Category>
           <CategoryTitle>Fechamento Sombrite</CategoryTitle>
