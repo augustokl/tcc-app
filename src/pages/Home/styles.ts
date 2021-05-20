@@ -18,11 +18,17 @@ export const Container = styled.View`
 
 export const InformationContainer = styled.View`
   width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 30px 60px;
   border-bottom-color: #808080;
   border-bottom-width: 1px;
+`;
+
+export const InformationLine = styled.View`
+  width: 100%;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: space-between;
 `;
 
 export const InformationItem = styled.View`

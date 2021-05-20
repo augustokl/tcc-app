@@ -7,8 +7,12 @@ export enum EquipmentTypes {
 export interface Equipment {
   id: number;
   fan: boolean;
+  sombrite: boolean;
   humidity: number;
   temperature: number;
+  uv: number;
+  humidtySoil: number;
+  flowRate: number;
 }
 
 export interface EquipmentState {

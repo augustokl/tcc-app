@@ -28,6 +28,8 @@ const Settings: React.FC = () => {
   const [temp, setTemp] = useState([10, 20]);
   const [humidity, setHumidity] = useState([60, 80]);
   const [interval, setInterval] = useState(0);
+  const [open, setOpen] = useState(new Date());
+  const [close, setClose] = useState(new Date());
 
   const { data, loading } = useSelector(
     (state: ApplicationState) => state.automaticConf,
@@ -44,17 +46,20 @@ const Settings: React.FC = () => {
       max_humidity,
       min_temperature,
       max_temperature,
+      activation_time,
+      close,
+      open,
     } = data;
 
     if(!min_humidity || max_humidity || min_temperature || max_temperature){
       return
     }
 
-    console.log('here')
-
-
     setTemp([min_temperature, max_temperature]);
     setHumidity([min_humidity, max_humidity]);
+    setInterval(activation_time);
+    setOpen(new Date(open));
+    setClose(new Date(close));
   }, [data]);
 
   const handleTempChangeValues = useCallback((values) => setTemp(values), []);
@@ -72,6 +77,9 @@ const Settings: React.FC = () => {
       max_humidity,
       min_temperature,
       max_temperature,
+      activation_time: interval,
+      open,
+      close
     };
 
     dispatch(updateAutomaticConfRequest(data));
@@ -145,11 +153,11 @@ const Settings: React.FC = () => {
         <Category>
           <CategoryTitle>Fechamento Sombrite</CategoryTitle>
         </Category>
-        <Picker  value={new Date()} />
+        <Picker  value={close} onChange={(event, date) => date ? setClose(date) : setClose(close)}/>
         <Category>
           <CategoryTitle>Abertura Sombrite</CategoryTitle>
         </Category>
-        <Picker  value={new Date()} />
+        <Picker  value={open} onChange={(event, date) => date ? setOpen(date) : setOpen(open)}/>
       </Content>
       <ButtonSave text="Salvar" onPress={onClickSave} />
     </Container>

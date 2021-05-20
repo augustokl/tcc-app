@@ -24,6 +24,7 @@ const ManualConf: React.FC = () => {
   const [fan, setFan] = useState(false);
   const [heater, setHeater] = useState(false);
   const [water, setWater] = useState(false);
+  const [sombrite, setSombrite] = useState(false);
 
   const { data, loading } = useSelector(
     (state: ApplicationState) => state.manualConf,
@@ -59,6 +60,7 @@ const ManualConf: React.FC = () => {
       fan,
       temperature: heater,
       humidity: water,
+      close: sombrite,
     };
 
     dispatch(updateManualConfRequest(data));
@@ -90,6 +92,10 @@ const ManualConf: React.FC = () => {
       <Category>
         <CategoryTitle>Irrigação</CategoryTitle>
         <Switch disabled={!active} onValueChange={setWater} value={water} />
+      </Category>
+      <Category>
+        <CategoryTitle>Fechar Sombrite</CategoryTitle>
+        <Switch disabled={!active} onValueChange={setSombrite} value={sombrite} />
       </Category>
       <ButtonSave text="Salvar" onPress={onCickSave} />
     </Container>

@@ -11,6 +11,9 @@ export interface AutomaticConf {
   max_humidity: number;
   min_temperature: number;
   max_temperature: number;
+  activation_time: number;
+  close: Date;
+  open: Date;
 }
 
 export interface AutomaticConfState {

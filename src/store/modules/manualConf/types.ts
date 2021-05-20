@@ -11,6 +11,7 @@ export interface ManualConf {
   fan: boolean;
   humidity: boolean;
   temperature: boolean;
+  close: boolean;
 }
 
 export interface ManualConfState {
