@@ -20,6 +20,23 @@ function* getConf() {
   try {
     const { data } = yield call(api.get, 'automatic-conf');
 
+    console.log('saga call')
+
+    const { open_sombrite, close_sombrite } = data;
+
+    const dateOpenSombrite: string[] = open_sombrite.split(':')
+    const openDate = new Date()
+    const dateCloseSombrite: string[] = close_sombrite.split(':')
+    const closeDate = new Date()
+
+    openDate.setHours(Number(dateOpenSombrite[0]))
+    openDate.setMinutes(Number(dateOpenSombrite[1]))
+    closeDate.setHours(Number(dateCloseSombrite[0]))
+    closeDate.setMinutes(Number(dateCloseSombrite[1]))
+
+    data.open_sombrite = openDate;
+    data.close_sombrite = closeDate;
+
     yield put(getAutomaticConfSuccess(data));
   } catch (err) {
     console.log(err.message);

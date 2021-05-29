@@ -41,6 +41,7 @@ const ManualConf: React.FC = () => {
       setFan(data.fan);
       setHeater(data.temperature);
       setWater(data.humidity);
+      setWater(data.sombrite);
     }
   }, [data]);
 
@@ -51,6 +52,7 @@ const ManualConf: React.FC = () => {
       setFan(active);
       setHeater(active);
       setWater(active);
+      setSombrite(active);
     }
   }, []);
 
@@ -60,7 +62,7 @@ const ManualConf: React.FC = () => {
       fan,
       temperature: heater,
       humidity: water,
-      close: sombrite,
+      sombrite,
     };
 
     dispatch(updateManualConfRequest(data));

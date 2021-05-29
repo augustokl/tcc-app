@@ -12,8 +12,8 @@ export interface AutomaticConf {
   min_temperature: number;
   max_temperature: number;
   activation_time: number;
-  close: Date;
-  open: Date;
+  close_sombrite: Date;
+  open_sombrite: Date;
 }
 
 export interface AutomaticConfState {

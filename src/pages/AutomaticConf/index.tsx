@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Platform } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { useIsFocused } from '@react-navigation/core'; 
 
 import Slider from '@ptomasroos/react-native-multi-slider';
 
@@ -25,11 +26,14 @@ import {
 } from './styles';
 
 const Settings: React.FC = () => {
+  const isFocused = useIsFocused();
+
   const [temp, setTemp] = useState([10, 20]);
   const [humidity, setHumidity] = useState([60, 80]);
   const [interval, setInterval] = useState(0);
   const [open, setOpen] = useState(new Date());
   const [close, setClose] = useState(new Date());
+  const [show, setShow] = useState(false);
 
   const { data, loading } = useSelector(
     (state: ApplicationState) => state.automaticConf,
@@ -37,8 +41,9 @@ const Settings: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('call')
     dispatch(getAutomaticConfRequest());
-  }, []);
+  }, [isFocused]);
 
   useEffect(() => {
     const {
@@ -47,19 +52,21 @@ const Settings: React.FC = () => {
       min_temperature,
       max_temperature,
       activation_time,
-      close,
-      open,
+      open_sombrite,
+      close_sombrite,
     } = data;
 
-    if(!min_humidity || max_humidity || min_temperature || max_temperature){
+    if(!min_humidity || !max_humidity || !min_temperature || !max_temperature){
       return
     }
+
+    console.log(open_sombrite, close_sombrite)
 
     setTemp([min_temperature, max_temperature]);
     setHumidity([min_humidity, max_humidity]);
     setInterval(activation_time);
-    setOpen(new Date(open));
-    setClose(new Date(close));
+    setOpen(open_sombrite);
+    setClose(close_sombrite);
   }, [data]);
 
   const handleTempChangeValues = useCallback((values) => setTemp(values), []);
@@ -78,12 +85,12 @@ const Settings: React.FC = () => {
       min_temperature,
       max_temperature,
       activation_time: interval,
-      open,
-      close
+      open_sombrite: open,
+      close_sombrite: close
     };
 
     dispatch(updateAutomaticConfRequest(data));
-  }, [humidity, temp]);
+  }, [humidity, temp, interval, open, close]);
 
   if (loading) {
     return (

@@ -8,11 +8,13 @@ export interface Equipment {
   id: number;
   fan: boolean;
   sombrite: boolean;
+  heater: boolean;
+  water_pump: boolean;
   humidity: number;
   temperature: number;
   uv: number;
-  humidtySoil: number;
-  flowRate: number;
+  soil_humidity: number;
+  water_flow: number;
 }
 
 export interface EquipmentState {

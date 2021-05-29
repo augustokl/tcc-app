@@ -81,14 +81,14 @@ const Temperature: React.FC = () => {
             <InformationText>Umi. Solo</InformationText>
             <InformationValue>
               <Ionicons name="water-outline" color={textColor} size={22} />
-              <InformationValueText>{data.humidtySoil}%</InformationValueText>
+              <InformationValueText>{data.soil_humidity}%</InformationValueText>
             </InformationValue>
           </InformationItem>
           <InformationItem>
             <InformationText>Vazão</InformationText>
             <InformationValue>
               <Entypo name="air" color={textColor} size={22} />
-              <InformationValueText>{data.flowRate}</InformationValueText>
+              <InformationValueText>{data.water_flow}</InformationValueText>
             </InformationValue>
           </InformationItem>
           <InformationItem>
