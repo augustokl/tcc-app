@@ -15,6 +15,7 @@ export interface Equipment {
   uv: number;
   soil_humidity: number;
   water_flow: number;
+  created_at: Date;
 }
 
 export interface EquipmentState {

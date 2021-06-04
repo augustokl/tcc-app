@@ -158,13 +158,13 @@ const Settings: React.FC = () => {
           }}
         />
         <Category>
-          <CategoryTitle>Fechamento Sombrite</CategoryTitle>
-        </Category>
-        <Picker  value={close} onChange={(event, date) => date ? setClose(date) : setClose(close)}/>
-        <Category>
           <CategoryTitle>Abertura Sombrite</CategoryTitle>
         </Category>
         <Picker  value={open} onChange={(event, date) => date ? setOpen(date) : setOpen(open)}/>
+        <Category>
+          <CategoryTitle>Fechamento Sombrite</CategoryTitle>
+        </Category>
+        <Picker  value={close} onChange={(event, date) => date ? setClose(date) : setClose(close)}/>
       </Content>
       <ButtonSave text="Salvar" onPress={onClickSave} />
     </Container>

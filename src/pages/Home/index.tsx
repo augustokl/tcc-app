@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
+import { format } from 'date-fns'
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -23,6 +24,7 @@ import {
   Title,
   TemperatureCircle,
   TemperatureLabel,
+  LastDate,
 } from './styles';
 
 const Temperature: React.FC = () => {
@@ -47,6 +49,7 @@ const Temperature: React.FC = () => {
 
   const fanText = data.fan ? 'ON' : 'OFF';
   const sombriteText = data.sombrite ? 'ABE' : 'FEC';
+  const date = data.created_at ? format(new Date(data.created_at), 'dd/MM/yyyy HH:mm') : ''
 
   return (
     <Container>
@@ -111,6 +114,9 @@ const Temperature: React.FC = () => {
             </TemperatureLabel>
           )}
         </TemperatureCircle>
+        <LastDate>
+          Última leitura: {date}
+        </LastDate>
       </Content>
     </Container>
   );

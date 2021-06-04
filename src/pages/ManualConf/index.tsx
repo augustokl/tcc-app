@@ -78,7 +78,7 @@ const ManualConf: React.FC = () => {
 
   return (
     <Container>
-      <Title>Comandos Manuais</Title>
+      <Title>Configurações Manuais</Title>
       <CategoryMain>
         <CategoryTitle>Ativar</CategoryTitle>
         <Switch onValueChange={handleActive} value={active} />

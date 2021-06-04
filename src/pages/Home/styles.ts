@@ -87,3 +87,9 @@ export const TemperatureLabel = styled.Text`
   color: ${orange};
   font-family: 'Montserrat-medium';
 `;
+
+export const LastDate = styled.Text`
+  font-size: 14px;
+  color: ${textColor};
+  font-family: 'Montserrat-medium';
+`;
