@@ -30,7 +30,7 @@ const Settings: React.FC = () => {
 
   const [temp, setTemp] = useState([10, 20]);
   const [humidity, setHumidity] = useState([60, 80]);
-  const [interval, setInterval] = useState(0);
+  const [activation, setActivation] = useState(0);
   const [open, setOpen] = useState(new Date());
   const [close, setClose] = useState(new Date());
   const [show, setShow] = useState(false);
@@ -41,9 +41,8 @@ const Settings: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('call')
     dispatch(getAutomaticConfRequest());
-  }, [isFocused]);
+  }, []);
 
   useEffect(() => {
     const {
@@ -64,7 +63,7 @@ const Settings: React.FC = () => {
 
     setTemp([min_temperature, max_temperature]);
     setHumidity([min_humidity, max_humidity]);
-    setInterval(activation_time);
+    setActivation(activation_time);
     setOpen(open_sombrite);
     setClose(close_sombrite);
   }, [data]);
@@ -84,13 +83,13 @@ const Settings: React.FC = () => {
       max_humidity,
       min_temperature,
       max_temperature,
-      activation_time: interval,
+      activation_time: activation,
       open_sombrite: open,
       close_sombrite: close
     };
 
     dispatch(updateAutomaticConfRequest(data));
-  }, [humidity, temp, interval, open, close]);
+  }, [humidity, temp, activation, open, close]);
 
   if (loading) {
     return (
@@ -149,11 +148,11 @@ const Settings: React.FC = () => {
             }
           }}
           keyboardType='numeric'
-          value={String(interval)}
+          value={String(activation)}
           onChangeText={newValue => {
             const regex = new RegExp('^[0-2]?[0-9]?$', 'g')
             if (regex.test(newValue)){
-              setInterval(Number(newValue))
+              setActivation(Number(newValue))
             }
           }}
         />
