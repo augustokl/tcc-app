@@ -3,7 +3,6 @@ import { ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
 
-
 import { ApplicationState } from '../../store';
 import { getDataRequest } from '../../store/modules/equipment/actions';
 
@@ -17,20 +16,19 @@ const Home: React.FC = () => {
   useEffect(() => {
     const request = () => dispatch(getDataRequest());
 
-    request()
+    request();
 
     const interval = setInterval(() => {
-      request()
-    }, 45000)
+      request();
+    }, 45000);
 
-    return () => clearInterval(interval)
+    return () => clearInterval(interval);
   }, []);
-
 
   return (
     <Container>
-       <Information />
-       <Temperature />
+      <Information />
+      <Temperature />
     </Container>
   );
 };

@@ -9,13 +9,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import { ApplicationState } from '../../../../store';
 import { textColor } from '../../../../styles/colors';
 
-import {  Container,
+import {
+  Container,
   InformationLine,
   InformationItem,
   InformationText,
   InformationValue,
-  InformationValueText
-} from './styles'
+  InformationValueText,
+} from './styles';
 
 const Information: React.FC = () => {
   const { data, loading } = useSelector(
@@ -31,61 +32,62 @@ const Information: React.FC = () => {
   }
 
   const fanText = data.fan ? 'ON' : 'OFF';
-  const sombriteText = data.sombrite ? 'ABE' : 'FEC';
+  const sombriteText = data.sombrite ? 'FEC' : 'ABT';
 
   return (
-      <Container>
-        <InformationLine>
-          <InformationItem>
-            <InformationText>Umidade</InformationText>
-            <InformationValue>
-              <Ionicons name="water-outline" color={textColor} size={22} />
-              <InformationValueText>{data.humidity}%</InformationValueText>
-            </InformationValue>
-          </InformationItem>
-          <InformationItem>
-            <InformationText>UV</InformationText>
-            <InformationValue>
-              <Ionicons name="sunny-outline" color={textColor} size={22} />
-              <InformationValueText>{data.uv}</InformationValueText>
-            </InformationValue>
-          </InformationItem>
-          <InformationItem>
-            <InformationText>Ventilação</InformationText>
-            <InformationValue>
-              <MaterialIcons name="fan" color={textColor} size={22} />
-              <InformationValueText textColor={data.fan ? '#b9ffb7' : '#ed374f'}>
-                {fanText}
-              </InformationValueText>
-            </InformationValue>
-          </InformationItem>
-        </InformationLine>
-        <InformationLine>
-          <InformationItem>
-            <InformationText>Umi. Solo</InformationText>
-            <InformationValue>
-              <Ionicons name="water-outline" color={textColor} size={22} />
-              <InformationValueText>{data.soil_humidity}%</InformationValueText>
-            </InformationValue>
-          </InformationItem>
-          <InformationItem>
-            <InformationText>Vazão</InformationText>
-            <InformationValue>
-              <Entypo name="air" color={textColor} size={22} />
-              <InformationValueText>{data.water_flow}</InformationValueText>
-            </InformationValue>
-          </InformationItem>
-          <InformationItem>
-            <InformationText>Sombrite</InformationText>
-            <InformationValue>
-              <MaterialIcons name="tent" color={textColor} size={22} />
-              <InformationValueText textColor={data.sombrite ? '#b9ffb7' : '#ed374f'}>
-                {sombriteText}
-              </InformationValueText>
-            </InformationValue>
-          </InformationItem>
-        </InformationLine>
-      </Container>
+    <Container>
+      <InformationLine>
+        <InformationItem>
+          <InformationText>Umidade</InformationText>
+          <InformationValue>
+            <Ionicons name="water-outline" color={textColor} size={22} />
+            <InformationValueText>{data.humidity}%</InformationValueText>
+          </InformationValue>
+        </InformationItem>
+        <InformationItem>
+          <InformationText>UV</InformationText>
+          <InformationValue>
+            <Ionicons name="sunny-outline" color={textColor} size={22} />
+            <InformationValueText>{data.uv}</InformationValueText>
+          </InformationValue>
+        </InformationItem>
+        <InformationItem>
+          <InformationText>Ventilação</InformationText>
+          <InformationValue>
+            <MaterialIcons name="fan" color={textColor} size={22} />
+            <InformationValueText textColor={data.fan ? '#b9ffb7' : '#ed374f'}>
+              {fanText}
+            </InformationValueText>
+          </InformationValue>
+        </InformationItem>
+      </InformationLine>
+      <InformationLine>
+        <InformationItem>
+          <InformationText>Umi. Solo</InformationText>
+          <InformationValue>
+            <Ionicons name="water-outline" color={textColor} size={22} />
+            <InformationValueText>{data.soil_humidity}%</InformationValueText>
+          </InformationValue>
+        </InformationItem>
+        <InformationItem>
+          <InformationText>Vazão</InformationText>
+          <InformationValue>
+            <Entypo name="air" color={textColor} size={22} />
+            <InformationValueText>{data.water_flow}L</InformationValueText>
+          </InformationValue>
+        </InformationItem>
+        <InformationItem>
+          <InformationText>Sombrite</InformationText>
+          <InformationValue>
+            <MaterialIcons name="tent" color={textColor} size={22} />
+            <InformationValueText
+              textColor={data.sombrite ? '#b9ffb7' : '#ed374f'}>
+              {sombriteText}
+            </InformationValueText>
+          </InformationValue>
+        </InformationItem>
+      </InformationLine>
+    </Container>
   );
 };
 

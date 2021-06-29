@@ -45,19 +45,19 @@ const ManualConf: React.FC = () => {
     }
   }, [data]);
 
-  const handleActive = useCallback((active) => {
-    setActive(active);
+  const handleActive = useCallback((activeManual) => {
+    setActive(activeManual);
 
-    if (!active) {
-      setFan(active);
-      setHeater(active);
-      setWater(active);
-      setSombrite(active);
+    if (!activeManual) {
+      setFan(activeManual);
+      setHeater(activeManual);
+      setWater(activeManual);
+      setSombrite(activeManual);
     }
   }, []);
 
   const onCickSave = useCallback(() => {
-    const data = {
+    const dataSend = {
       active,
       fan,
       temperature: heater,
@@ -65,8 +65,8 @@ const ManualConf: React.FC = () => {
       sombrite,
     };
 
-    dispatch(updateManualConfRequest(data));
-  }, [active, fan, heater, water]);
+    dispatch(updateManualConfRequest(dataSend));
+  }, [active, fan, heater, water, sombrite]);
 
   if (loading) {
     return (
@@ -97,7 +97,11 @@ const ManualConf: React.FC = () => {
       </Category>
       <Category>
         <CategoryTitle>Fechar Sombrite</CategoryTitle>
-        <Switch disabled={!active} onValueChange={setSombrite} value={sombrite} />
+        <Switch
+          disabled={!active}
+          onValueChange={setSombrite}
+          value={sombrite}
+        />
       </Category>
       <ButtonSave text="Salvar" onPress={onCickSave} />
     </Container>
